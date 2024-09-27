@@ -20,11 +20,10 @@ public class LoginCtl extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String op = req.getParameter("operation");
 		if (op != null && op.equals("logout")) {
-			System.out.println("op >>>>"+op);
+
 			HttpSession session = req.getSession();
 			session.invalidate();
 		}
-		System.out.println("op else >>>>"+op);
 		resp.sendRedirect("LoginView.jsp");
 
 	}
@@ -35,9 +34,8 @@ public class LoginCtl extends HttpServlet {
 		String loginId = req.getParameter("loginId");
 		String password = req.getParameter("password");
 		String op = req.getParameter("operation");
-		
-		HttpSession session = req.getSession();
 
+		HttpSession session = req.getSession();
 
 		if (op.equals("SignIn")) {
 			UserModel model = new UserModel();

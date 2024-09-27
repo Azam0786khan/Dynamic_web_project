@@ -35,7 +35,7 @@ public class UserRegistrationCtl extends HttpServlet {
 		try {
 			bean.setDob(sdf.parse(req.getParameter("dob")));
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		bean.setAddress(req.getParameter("address"));
@@ -48,7 +48,7 @@ public class UserRegistrationCtl extends HttpServlet {
 			RequestDispatcher rd = req.getRequestDispatcher("UserRegistrationView.jsp");
 			rd.forward(req, resp);
 					} catch (Exception e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		

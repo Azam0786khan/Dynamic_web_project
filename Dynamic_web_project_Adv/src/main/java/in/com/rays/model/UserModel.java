@@ -138,7 +138,8 @@ public class UserModel {
 			bean.setLastName(rs.getString(3));
 			bean.setLoginId(rs.getString(4));
 			bean.setPassword(rs.getString(5));
-			bean.setAddress(rs.getString(6));
+			bean.setDob(rs.getDate(6));
+			bean.setAddress(rs.getString(7));
 			list.add(bean);
 		}
 

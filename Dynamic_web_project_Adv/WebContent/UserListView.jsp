@@ -13,6 +13,7 @@
 	<%
 		List list = (List) request.getAttribute("list");
 		int pageNo = (int) request.getAttribute("pageNo");
+		int index =((pageNo - 1)*5)+1;
 	%>
 	<%@ include file="Header.jsp"%>
 	<form action="UserListCtl" method="post">
@@ -29,13 +30,15 @@
 		<br>
 		<table border="1%" style="width: 100%">
 			<tr>
-				<th>Id</th>
+			    <th>Select</th>
+				<th>S.No</th>
 				<th>FirstName</th>
 				<th>LastName</th>
 				<th>LoginId</th>
 				<th>Password</th>
 				<th>DOB</th>
 				<th>Address</th>
+				<th>Edit</th>
 			</tr>
 			<%
 				Iterator it = list.iterator();
@@ -43,13 +46,16 @@
 					UserBean bean = (UserBean) it.next();
 			%>
 			<tr>
-				<td align="center"><%=bean.getId()%></td>
+			    <td align="center"><input type="checkbox" name="ids"
+					value="<%=bean.getId()%>"></td>
+				<td align="center"><%=index++%></td>
 				<td align="center"><%=bean.getFirstName()%></td>
 				<td align="center"><%=bean.getLastName()%></td>
 				<td align="center"><%=bean.getLoginId()%></td>
 				<td align="center"><%=bean.getPassword()%></td>
 				<td align="center"><%=bean.getDob()%></td>
 				<td align="center"><%=bean.getAddress()%></td>
+				<td align="center"><a href="UserCtl?id=<%=bean.getId()%>">edit</a></td>
 			</tr>
 			<%
 				}
@@ -60,6 +66,10 @@
 			<tr>
 				<td style="width: 30%"><input type="submit" name="operation"
 					value="previous" <%=(pageNo == 1) ? "disabled" : ""%>></td>
+					<td style="width: 30%"><input type="submit" name="operation"
+					value="add"></td>
+				<td style="width: 25%"><input type="submit" name="operation"
+					value="delete"></td>
 				<td style="text-align: right;"><input type="submit"
 					name="operation" value="next"
 					<%=(list.size() == 0) ? "disabled" : ""%>></td>

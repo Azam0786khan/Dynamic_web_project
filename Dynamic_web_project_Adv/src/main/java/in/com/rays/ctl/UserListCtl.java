@@ -31,7 +31,7 @@ public class UserListCtl extends HttpServlet {
 
 		try {
 			List list = model.search(bean, pageNo, pageSize);
-			System.out.println(" list"+list);
+			
 			req.setAttribute("list", list);
 			req.setAttribute("pageNo", pageNo);
 			RequestDispatcher rd = req.getRequestDispatcher("UserListView.jsp");
@@ -66,6 +66,21 @@ public class UserListCtl extends HttpServlet {
 			pageNo = Integer.parseInt(req.getParameter("pageNo"));
 			pageNo--;
 		}
+		if (op.equals("add")) {
+			resp.sendRedirect("UserCtl");
+		}
+		if (op.equals("delete")) {
+			String[] ids = req.getParameterValues("ids");
+			if(ids !=null && ids.length > 0) {
+				for(String id :ids) {
+					try {
+						model.delete(Integer.parseInt(id));
+					}catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		}
 
 		try {
 			List list = model.search(bean, pageNo, pageSize);
@@ -75,7 +90,7 @@ public class UserListCtl extends HttpServlet {
 			RequestDispatcher rd = req.getRequestDispatcher("UserListView.jsp");
 			rd.forward(req, resp);
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 
 	}
