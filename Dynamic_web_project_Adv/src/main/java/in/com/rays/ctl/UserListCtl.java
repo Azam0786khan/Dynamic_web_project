@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import in.com.rays.bean.UserBean;
 import in.com.rays.model.UserModel;
 
-@WebServlet("/UserListCtl")
+@WebServlet("/UserListCtl.do")
 public class UserListCtl extends HttpServlet {
 
 	@Override
@@ -37,6 +37,7 @@ public class UserListCtl extends HttpServlet {
 			RequestDispatcher rd = req.getRequestDispatcher("UserListView.jsp");
 			rd.forward(req, resp);
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
 
 	}
