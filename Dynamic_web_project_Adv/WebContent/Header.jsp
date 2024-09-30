@@ -18,6 +18,10 @@
 	<b>|</b>
 	<a href="UserListCtl.do"><b>User List</b></a>
 	<b>|</b>
+	<a href="MarksheetCtl.do"><b>Add Marksheet</b></a>
+	<b>|</b>
+	<a href="MarksheetListCtl.do"><b>Marksheet List</b></a>
+	<b>|</b>
 	<a href="LoginCtl?operation=logout"><b>Logout</b></a>
 	<%
 		} else {

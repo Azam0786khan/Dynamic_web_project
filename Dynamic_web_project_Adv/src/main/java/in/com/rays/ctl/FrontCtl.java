@@ -25,7 +25,7 @@ public class FrontCtl implements Filter {
 
 		String uri = req.getRequestURI();
 
-		HttpSession session = req.getSession();
+		HttpSession session = req.getSession(false);
 
 		if (session.getAttribute("user") == null) {
 

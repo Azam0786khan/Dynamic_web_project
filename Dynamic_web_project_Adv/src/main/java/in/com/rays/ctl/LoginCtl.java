@@ -21,7 +21,7 @@ public class LoginCtl extends HttpServlet {
 		String op = req.getParameter("operation");
 		if (op != null && op.equals("logout")) {
 
-			HttpSession session = req.getSession();
+			HttpSession session = req.getSession(false);
 			session.invalidate();
 		}
 		resp.sendRedirect("LoginView.jsp");
